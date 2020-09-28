@@ -1,6 +1,7 @@
 {
     "name": "ceddyg/maileva-sdk-php",
-    "description": "",
+    "description": "",    
+    "license": "MIT",
     "keywords": [
         "maileva",
         "php",
