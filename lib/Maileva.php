@@ -33,13 +33,16 @@ class Maileva
      */
     protected $config;
     
+    protected $authUrl;
+    
     public function __construct(
         $username,
         $password,
         $client_id,
         $client_secret,
         ClientInterface $client, 
-        Configuration $config
+        Configuration $config,
+        $authUrl='https://api.sandbox.maileva.net/authentication/oauth2/token'
     )
     {
         $this->client = $client;
@@ -47,19 +50,17 @@ class Maileva
         
         $this->config->setUsername($username);
         $this->config->setPassword($password);
+        $this->authUrl = $authUrl;
         
         $this->connexion($client_id, $client_secret);
     }
     
     protected function connexion($client_id, $client_secret)
-    {
-        $url = parse_url($this->config->getHost());
-        $authUrl = $url['scheme'].'://'.$url['host'].'/authentication/oauth2/token';
-        
+    {       
         $response = $this->client->send(
             new \GuzzleHttp\Psr7\Request(
                 'POST',
-                $authUrl,
+                $this->authUrl,
                 [
                     'Cache-Control' => 'no-cache',
                     'Content-Type' => 'application/x-www-form-urlencoded'
