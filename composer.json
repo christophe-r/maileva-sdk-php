@@ -1,6 +1,6 @@
 {
-    "name": "ceddyg/maileva-sdk-php",
-    "description": "",    
+    "name": "christophe-r/maileva-sdk-php",
+    "description": "Fork of ceddyg/maileva-sdk-php",    
     "license": "MIT",
     "keywords": [
         "maileva",
