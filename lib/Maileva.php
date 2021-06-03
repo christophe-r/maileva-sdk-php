@@ -53,10 +53,13 @@ class Maileva
     
     protected function connexion($client_id, $client_secret)
     {
+        $url = parse_url($this->config->getHost());
+        $authUrl = $url['scheme'].'://'.$url['host'].'/authentication/oauth2/token';
+        
         $response = $this->client->send(
             new \GuzzleHttp\Psr7\Request(
                 'POST',
-                'https://api.sandbox.maileva.net/authentication/oauth2/token',
+                $authUrl,
                 [
                     'Cache-Control' => 'no-cache',
                     'Content-Type' => 'application/x-www-form-urlencoded'
