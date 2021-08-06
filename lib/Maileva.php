@@ -65,7 +65,7 @@ class Maileva
                     'Cache-Control' => 'no-cache',
                     'Content-Type' => 'application/x-www-form-urlencoded'
                 ],
-                \GuzzleHttp\Psr7\build_query(
+                \GuzzleHttp\Psr7\Query::build(
                     [
                         'username' => $this->config->getUsername(),
                         'password' => $this->config->getPassword(),
